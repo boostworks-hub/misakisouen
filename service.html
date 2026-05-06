@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>施工案内 | 株式会社美咲創苑</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#2D6A4F;--green-d:#1B4332;--green-l:#40916C;--green-pale:#D8F3DC;
+  --gold:#B7950B;--gold-l:#D4AC0D;--cream:#FAF7F0;--charcoal:#1A1A18;
+  --black:#0E0E0C;--white:#FFFFFF;--silver:#6B7280;--silver-l:#9CA3AF;
+  --border:rgba(45,106,79,0.18);--border-l:rgba(45,106,79,0.08);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;color:var(--charcoal);background:var(--cream);line-height:1.7;overflow-x:hidden}
+/* HEADER */
+#site-header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,14,12,0.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(45,106,79,0.25)}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;gap:32px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.logo-en{font-family:'Oswald',sans-serif;font-size:17px;font-weight:700;color:var(--white);letter-spacing:.12em}
+.logo-ja{font-size:10px;color:rgba(255,255,255,.45);letter-spacing:.08em}
+.logo-bar{display:block;width:2px;height:28px;background:var(--green-l);margin:0 4px}
+.pc-nav{display:flex;gap:24px;margin-left:auto}
+.pc-nav a{font-size:12px;color:rgba(255,255,255,.7);text-decoration:none;letter-spacing:.08em;transition:color .2s;padding:4px 0;position:relative}
+.pc-nav a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1px;background:var(--green-l);transform:scaleX(0);transition:transform .2s}
+.pc-nav a:hover{color:var(--white)}.pc-nav a:hover::after,.pc-nav a.active::after{transform:scaleX(1)}.pc-nav a.active{color:var(--white)}
+.header-cta{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.header-tel{display:flex;flex-direction:column;align-items:flex-end;text-decoration:none}
+.header-tel span{font-size:9px;color:rgba(255,255,255,.4);letter-spacing:.08em}
+.header-tel-num{font-family:'Oswald',sans-serif;font-size:18px;color:var(--green-l);letter-spacing:.08em;line-height:1}
+.btn-primary{background:var(--green);color:var(--white);font-size:11px;font-weight:700;padding:9px 18px;border-radius:2px;text-decoration:none;letter-spacing:.1em;transition:background .2s;white-space:nowrap}
+.btn-primary:hover{background:var(--green-l)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.hamburger span{display:block;width:24px;height:2px;background:var(--white);transition:.3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-nav{display:none;position:fixed;top:72px;left:0;right:0;bottom:0;background:rgba(10,14,12,.99);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:28px}
+.mobile-nav.open{display:flex}
+.mobile-nav a{font-size:20px;color:var(--white);text-decoration:none;letter-spacing:.12em;transition:color .2s}
+.mobile-nav a:hover{color:var(--green-l)}
+/* PAGE HERO */
+.page-hero{margin-top:72px;background:linear-gradient(135deg,var(--green-d) 0%,#0a1a0f 100%);padding:80px 24px;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(64,145,108,0.12) 1px,transparent 1px);background-size:32px 32px}
+.page-hero-inner{max-width:1160px;margin:0 auto;position:relative}
+.page-hero-label{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:.3em;color:var(--green-l);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.page-hero-label::before{content:'';display:block;width:24px;height:1px;background:var(--green-l)}
+.page-hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(28px,4vw,48px);color:var(--white);font-weight:700;margin-bottom:12px}
+.page-hero-sub{font-size:15px;color:rgba(255,255,255,0.6)}
+.breadcrumb{margin-top:24px;display:flex;gap:8px;align-items:center}
+.breadcrumb a,.breadcrumb span{font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none;letter-spacing:.05em;transition:color .2s}
+.breadcrumb a:hover{color:var(--green-l)}.breadcrumb .sep{color:rgba(255,255,255,0.2)}
+/* SERVICE BLOCKS */
+.service-block{padding:96px 24px}
+.service-block.bg-light{background:var(--white)}
+.service-inner{max-width:1160px;margin:0 auto}
+.service-row{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.service-row.reverse .service-img-wrap{order:1}
+.service-img-wrap{position:relative}
+.service-img{width:100%;height:360px;object-fit:cover;display:block}
+.service-img-badge{position:absolute;top:20px;left:20px;background:var(--green);color:var(--white);font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:.2em;padding:6px 14px}
+.service-text-label{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:.28em;color:var(--green);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.service-text-label::before{content:'';display:block;width:24px;height:1px;background:var(--green)}
+.service-title{font-family:'Noto Serif JP',serif;font-size:clamp(22px,3vw,34px);font-weight:700;color:var(--charcoal);margin-bottom:18px;line-height:1.35}
+.service-desc{font-size:14px;color:var(--silver);line-height:1.95;margin-bottom:24px}
+.service-features{list-style:none;margin-bottom:24px;display:flex;flex-direction:column;gap:8px}
+.service-features li{font-size:13px;display:flex;align-items:center;gap:10px;color:var(--charcoal)}
+.service-features li::before{content:'';display:block;width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0}
+.service-note{background:var(--green-pale);border-left:3px solid var(--green);padding:14px 18px;font-size:13px;color:var(--charcoal)}
+/* CTA BAND */
+.cta-band{background:var(--green-d);padding:72px 24px;text-align:center}
+.cta-band-title{font-family:'Noto Serif JP',serif;font-size:clamp(20px,2.5vw,30px);color:var(--white);font-weight:700;margin-bottom:12px}
+.cta-band-sub{font-size:14px;color:rgba(255,255,255,.55);margin-bottom:32px;line-height:1.8}
+.cta-band-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-gold{background:var(--green-l);color:var(--white);font-size:13px;font-weight:700;padding:14px 36px;border-radius:2px;text-decoration:none;letter-spacing:.1em;transition:background .2s}
+.btn-gold:hover{background:var(--green)}
+.btn-outline-w{border:1px solid rgba(255,255,255,.4);color:var(--white);font-size:13px;padding:13px 36px;border-radius:2px;text-decoration:none;letter-spacing:.1em;transition:all .2s}
+.btn-outline-w:hover{border-color:var(--green-l);background:rgba(64,145,108,.15)}
+/* FOOTER */
+footer{background:var(--black);padding:72px 24px 32px;border-top:1px solid rgba(45,106,79,.2)}
+.footer-inner{max-width:1160px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;margin-bottom:48px}
+.footer-desc{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9;margin:16px 0}
+.footer-address{font-size:12px;color:rgba(255,255,255,.3);line-height:1.9;font-style:normal}
+.footer-col-title{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:.2em;color:var(--green-l);margin-bottom:16px}
+.footer-links{list-style:none}
+.footer-links li{margin-bottom:8px}
+.footer-links a{font-size:12px;color:rgba(255,255,255,.4);text-decoration:none;transition:color .2s;letter-spacing:.04em}
+.footer-links a:hover{color:var(--white)}
+.footer-bottom{border-top:1px solid rgba(45,106,79,.15);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.footer-copy{font-size:11px;color:rgba(255,255,255,.25);letter-spacing:.04em}
+/* ANIMATION */
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}
+@media(max-width:900px){.service-row{grid-template-columns:1fr}.service-row.reverse .service-img-wrap{order:-1}}
+@media(max-width:768px){.pc-nav,.header-cta{display:none}.hamburger{display:flex}.footer-grid{grid-template-columns:1fr;gap:32px}}
+</style>
+</head>
+<body>
+<header id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-en">MISAKI SOUEN</span>
+      <span class="logo-ja">株式会社美咲創苑</span>
+      <span class="logo-bar"></span>
+    </a>
+    <nav class="pc-nav">
+      <a href="service.html" class="active">施工案内</a>
+      <a href="works.html">施工実績</a>
+      <a href="company.html">会社概要</a>
+      <a href="recruit.html">採用情報</a>
+      <a href="recruit_story.html">求職者のみなさまへ</a>
+      <a href="contact.html">お問い合わせ</a>
+    </nav>
+    <div class="header-cta">
+      <a href="tel:09010618192" class="header-tel">
+        <span>お気軽にご相談ください</span>
+        <span class="header-tel-num">090-1061-8192</span>
+      </a>
+      <a href="contact.html" class="btn-primary">無料相談</a>
+    </div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<nav class="mobile-nav" id="mobileNav">
+  <a href="service.html" onclick="closeMenu()">施工案内</a>
+  <a href="works.html" onclick="closeMenu()">施工実績</a>
+  <a href="company.html" onclick="closeMenu()">会社概要</a>
+  <a href="recruit.html" onclick="closeMenu()">採用情報</a>
+  <a href="recruit_story.html" onclick="closeMenu()">求職者のみなさまへ</a>
+  <a href="contact.html" onclick="closeMenu()">お問い合わせ</a>
+  <a href="tel:09010618192" style="color:var(--green-l);font-family:'Oswald',sans-serif;font-size:22px;">090-1061-8192</a>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-label">SERVICES</div>
+    <h1>施工案内</h1>
+    <p class="page-hero-sub">造園・剪定・外構工事——緑に関わるすべてをお任せください</p>
+    <nav class="breadcrumb">
+      <a href="index.html">TOP</a><span class="sep">›</span><span>施工案内</span>
+    </nav>
+  </div>
+</section>
+
+<!-- SERVICE 01 庭木の剪定 -->
+<section class="service-block bg-light" id="pruning">
+  <div class="service-inner">
+    <div class="service-row">
+      <div class="service-img-wrap fade-up">
+        <img class="service-img" src="https://images.unsplash.com/photo-1599598425-ce867640a5c1?w=800&q=80" alt="庭木の剪定">
+        <div class="service-img-badge">SERVICE 01</div>
+      </div>
+      <div class="fade-up d2">
+        <div class="service-text-label">PRUNING / GARDEN CARE</div>
+        <h2 class="service-title">庭木の剪定・<br>お手入れ</h2>
+        <p class="service-desc">松・槇・もみじ・椿・生垣など、あらゆる樹木の剪定に対応します。樹形を美しく整えながら、樹木の健康を守るプロの技術で丁寧に作業します。1本からご依頼いただけます。</p>
+        <ul class="service-features">
+          <li>松の剪定（みどり摘み・もみ上げ）</li>
+          <li>槇・生垣の刈り込み</li>
+          <li>もみじ・桜などの落葉樹の剪定</li>
+          <li>病害虫防除・薬剤散布</li>
+          <li>年間管理プラン対応</li>
+        </ul>
+        <div class="service-note"><strong>料金目安：</strong>1本 3,000円〜（樹種・サイズ・状況による）。複数本・年間契約はお得な料金設定あり。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 02 造園・庭づくり -->
+<section class="service-block" id="garden">
+  <div class="service-inner">
+    <div class="service-row reverse">
+      <div class="fade-up">
+        <div class="service-text-label">LANDSCAPE CONSTRUCTION</div>
+        <h2 class="service-title">造園・庭づくり</h2>
+        <p class="service-desc">和風庭園・洋風ガーデン・坪庭・蹲踞まで、デザインから施工まで一貫対応。お客様のご要望をしっかりとヒアリングし、理想の空間を丁寧に創り上げます。</p>
+        <ul class="service-features">
+          <li>和風庭園の設計・施工</li>
+          <li>洋風ガーデン・ナチュラルガーデン</li>
+          <li>坪庭・蹲踞・石組み</li>
+          <li>植栽・芝生張り</li>
+          <li>池泉・水景施設</li>
+        </ul>
+        <div class="service-note"><strong>特徴：</strong>有名日本庭園の管理経験を持つ職人が担当。本物の庭師の技術をご家庭のお庭に。</div>
+      </div>
+      <div class="service-img-wrap fade-up d2">
+        <img class="service-img" src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=80" alt="造園・庭づくり">
+        <div class="service-img-badge">SERVICE 02</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 03 外構・エクステリア -->
+<section class="service-block bg-light" id="exterior">
+  <div class="service-inner">
+    <div class="service-row">
+      <div class="service-img-wrap fade-up">
+        <img class="service-img" src="https://images.unsplash.com/photo-1558618047-f4e70a198968?w=800&q=80" alt="外構工事">
+        <div class="service-img-badge">SERVICE 03</div>
+      </div>
+      <div class="fade-up d2">
+        <div class="service-text-label">EXTERIOR WORK</div>
+        <h2 class="service-title">外構・<br>エクステリア工事</h2>
+        <p class="service-desc">門扉・フェンス・カーポート・駐車場・アプローチ・ブロック塀など、建物周辺の外構工事全般に対応。造園と外構を一体提案することで、美しく統一感のある外観を実現します。</p>
+        <ul class="service-features">
+          <li>門扉・フェンス・ブロック塀の設置</li>
+          <li>駐車場・アプローチ工事</li>
+          <li>カーポート・ウッドデッキ</li>
+          <li>インターロッキング・石張り</li>
+          <li>竹垣・石垣の施工</li>
+        </ul>
+        <div class="service-note"><strong>料金目安：</strong>内容・規模によって大きく異なります。現地調査後に詳細お見積りを提示します（無料）。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 04 草刈り・伐採 -->
+<section class="service-block" id="mowing">
+  <div class="service-inner">
+    <div class="service-row reverse">
+      <div class="fade-up">
+        <div class="service-text-label">MOWING / TREE REMOVAL</div>
+        <h2 class="service-title">草刈り・除草・<br>伐採・抜根</h2>
+        <p class="service-desc">空き地・法面・工場敷地の草刈りや除草、不要となった樹木の伐採・抜根まで対応。定期管理契約を結ぶことで、コストを抑えながら敷地を常にきれいに保てます。</p>
+        <ul class="service-features">
+          <li>法面・空き地の草刈り</li>
+          <li>工場・施設敷地の除草</li>
+          <li>高木・危険木の伐採</li>
+          <li>抜根・残土処分</li>
+          <li>定期管理契約（月次・年次）</li>
+        </ul>
+        <div class="service-note"><strong>対応エリア：</strong>都内近郊・埼玉県南部・栃木県を中心に対応。遠方はご相談ください。</div>
+      </div>
+      <div class="service-img-wrap fade-up d2">
+        <img class="service-img" src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=800&q=80" alt="草刈り伐採">
+        <div class="service-img-badge">SERVICE 04</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 05 施設植栽管理 -->
+<section class="service-block bg-light" id="facility">
+  <div class="service-inner">
+    <div class="service-row">
+      <div class="service-img-wrap fade-up">
+        <img class="service-img" src="https://images.unsplash.com/photo-1570737665-55a0b4b2bc9b?w=800&q=80" alt="施設植栽管理">
+        <div class="service-img-badge">SERVICE 05</div>
+      </div>
+      <div class="fade-up d2">
+        <div class="service-text-label">FACILITY MANAGEMENT</div>
+        <h2 class="service-title">マンション・施設の<br>植栽年間管理</h2>
+        <p class="service-desc">マンション共用部・商業施設・公園・学校・病院などの植栽を年間管理します。定期巡回・施肥・防除・剪定を含む包括プランで、施設の緑を常に美しく保ちます。</p>
+        <ul class="service-features">
+          <li>マンション共用部の植栽管理</li>
+          <li>商業施設・オフィスビルの緑化管理</li>
+          <li>公園・学校・医療施設の管理</li>
+          <li>定期施肥・農薬散布</li>
+          <li>緊急対応・台風後点検</li>
+        </ul>
+        <div class="service-note"><strong>管理実績：</strong>有名日本庭園の年間管理も手がける実績。規模・内容に応じたカスタムプランを提案します。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 06 日本庭園 -->
+<section class="service-block" id="japanese">
+  <div class="service-inner">
+    <div class="service-row reverse">
+      <div class="fade-up">
+        <div class="service-text-label">JAPANESE GARDEN</div>
+        <h2 class="service-title">日本庭園・<br>伝統造園</h2>
+        <p class="service-desc">竹垣・石積み・石組み・池泉・枯山水など、本格的な日本庭園の設計・施工が得意です。伝統的な技法を受け継いだ職人が、他社では経験できない本物の庭師の仕事をご提供します。</p>
+        <ul class="service-features">
+          <li>竹垣（四つ目垣・建仁寺垣・矢来垣）の施工</li>
+          <li>石組み・石積み・飛び石</li>
+          <li>池泉・水景施設の造成</li>
+          <li>枯山水・砂紋</li>
+          <li>蹲踞・灯籠の設置</li>
+        </ul>
+        <div class="service-note"><strong>こだわり：</strong>一期一会の庭づくり。素材選びから仕上げまで、職人の感性と経験が光ります。</div>
+      </div>
+      <div class="service-img-wrap fade-up d2">
+        <img class="service-img" src="https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=800&q=80" alt="日本庭園">
+        <div class="service-img-badge">SERVICE 06</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="cta-band-title">まずはお気軽にご相談ください</div>
+  <p class="cta-band-sub">現地調査・お見積りは無料です。小さなお手入れから大規模造園まで、どんなご相談もお待ちしています。</p>
+  <div class="cta-band-btns">
+    <a href="contact.html" class="btn-gold">お問い合わせ・無料見積り</a>
+    <a href="works.html" class="btn-outline-w">施工実績を見る</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="logo" style="display:inline-flex;margin-bottom:20px">
+          <span class="logo-en">MISAKI SOUEN</span>
+          <span class="logo-ja">株式会社美咲創苑</span>
+          <span class="logo-bar"></span>
+        </a>
+        <p class="footer-desc">造園・植栽管理・外構工事を手がける専門会社。栃木・埼玉を中心に幅広く対応します。</p>
+        <address class="footer-address">
+          【本社】栃木県下都賀郡壬生町大字壬生丁１２２番地４５<br>
+          【越谷営業所】埼玉県越谷市大間野町1-71-9<br>
+          TEL: 090-1061-8192　代表：高橋 伸一
+        </address>
+      </div>
+      <div>
+        <div class="footer-col-title">SERVICES</div>
+        <ul class="footer-links">
+          <li><a href="#pruning">庭木の剪定・お手入れ</a></li>
+          <li><a href="#garden">造園・庭づくり</a></li>
+          <li><a href="#exterior">外構・エクステリア</a></li>
+          <li><a href="#mowing">草刈り・伐採</a></li>
+          <li><a href="#japanese">日本庭園</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">PAGES</div>
+                <ul class="footer-links">
+          <li><a href="index.html">TOP</a></li>
+          <li><a href="service.html">施工案内</a></li>
+          <li><a href="works.html">施工実績</a></li>
+          <li><a href="company.html">会社概要</a></li>
+          <li><a href="recruit.html">採用情報</a></li>
+          <li><a href="recruit_story.html">求職者のみなさまへ</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 株式会社美咲創苑. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+<script>
+const ham=document.getElementById('hamburger');
+const mNav=document.getElementById('mobileNav');
+ham.addEventListener('click',()=>{ham.classList.toggle('open');mNav.classList.toggle('open');document.body.style.overflow=mNav.classList.contains('open')?'hidden':'';});
+function closeMenu(){ham.classList.remove('open');mNav.classList.remove('open');document.body.style.overflow='';}
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.12});
+document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
